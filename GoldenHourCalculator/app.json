@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "GoldenHourCalculator",
+    "slug": "GoldenHourCalculator",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
