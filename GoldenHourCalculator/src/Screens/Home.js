@@ -4,7 +4,9 @@ import MyStack from '../../App';
 
 //import api from './src/Services/Api';
 
-const Home = ({ navigation }, props) => {
+const Home = ({ navigation }) => {
+    const [lat, onChangeLat] = React.useState(null);
+    const [long, onChangeLong] = React.useState(null);
     console.log("lat, long");
     console.log( navigation.number);
 
@@ -14,14 +16,15 @@ const Home = ({ navigation }, props) => {
     <Text style={styles.description}>Insert the latitude and longitude of the location that you wish to see the today's Golden Hour:</Text>
     <TextInput
       style={styles.input}
-      value={MyStack.lat}
+      onChangeText={onChangeLat}
+      value={lat}
       placeholder="Latitude"
       keyboardType="number-pad"
     />
     <TextInput
       style={styles.input}
-      onChangeText={MyStack.onChangeLong}
-      value={MyStack.long}
+      onChangeText={onChangeLong}
+      value={long}
       placeholder="Longitude"
       keyboardType="number-pad"
     />
@@ -29,7 +32,9 @@ const Home = ({ navigation }, props) => {
       style={styles.button}
       title="Get Golden Hour"
       color='#7988DB'
-      onPress={() => navigation.navigate('Response')}
+      onPress={() => navigation.navigate('Response', {
+        lat: lat, long: long
+      })}
     />
     </View>
   );

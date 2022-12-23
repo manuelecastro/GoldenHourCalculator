@@ -10,11 +10,7 @@ import Response from "./src/Screens/Response";
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
-  const [lat, onChangeLat] = React.useState(null);
-  const [long, onChangeLong] = React.useState(null);
   
-  console.log("lat, long");
-  console.log(lat, long);
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -22,7 +18,6 @@ const MyStack = () => {
           name="Home"
           component={Home}
           options={{title: ''}}
-          number= "1"
         />
         <Stack.Screen name="Response" component={Response} options={{title: ''}}/>
       </Stack.Navigator>

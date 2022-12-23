@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Alert} from 'react-native';
 import MyStack from '../../App';
 
-export default function Response() {
+export default function Response({route, navigation}) {
+    
+    const {lat, long } = route.params;
     console.log("lat, long");
-    console.log(MyStack.lat, MyStack.long);
+    console.log(lat, long);
+     
+    let message = "";
+    useEffect(() => {
+        async () => {
+            try {
+              const response = await fetch(
+               `https://api.sunrisesunset.io/json?lat=${lat}&lng=${long}&timezone=UTC&date=today`,
+              );
+              json = await response.json(); 
+              message = `The given location Golden Hour is: ${json.results.golden_hour}`; 
+              console.log(message);                         
+            } catch (error) {
+              console.error(error);
+            } 
+          }
+    });
+    
 
   return (
     <View style={styles.responseContainer}>
     <Text style={styles.title}>Golden Hour Calculator</Text>
-    <Button
+    <Text>
+           ${message}
+    </Text>
+    {/* <Button
       style={styles.button}
       title="Get Back"
       color='#7988DB'
-      onPress={ async () => {
-             try {
-               const response = await fetch(
-                `https://api.sunrisesunset.io/json?lat=${MyStack.lat}&lng=${MyStack.long}&timezone=UTC&date=today`,
-               );
-               const json = await response.json();
-                            
-               return Alert.alert(`worked! ${json.results.golden_hour}`);
-             } catch (error) {
-               console.error(error);
-             } 
-           }
-        }/>
+      onPress={ 
+        }/> */}
     </View>
   );
 }
