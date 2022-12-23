@@ -1,14 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput , Alert, Button} from 'react-native';
-import MyStack from '../../App';
+import { StyleSheet, Text, View, TextInput ,  Button} from 'react-native';
 
-//import api from './src/Services/Api';
 
 const Home = ({ navigation }) => {
     const [lat, onChangeLat] = React.useState(null);
     const [long, onChangeLong] = React.useState(null);
-    console.log("lat, long");
-    console.log( navigation.number);
 
   return (
     <View style={styles.homeContainer}>
@@ -80,16 +76,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-// async () => {
-//     try {
-//       const response = await fetch(
-//         `https://api.sunrisesunset.io/json?lat=${lat}&lng=${long}&timezone=UTC&date=today`,
-//       );
-//       const json = await response.json();
-                    
-//       return console.log(json.results);
-//     } catch (error) {
-//       console.error(error);
-//     } 
-//   }
